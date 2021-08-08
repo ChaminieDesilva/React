@@ -17,7 +17,7 @@ class App extends Component {
         <Navbar navbar-light color = "dark">
           <div className="container">
             <NavbarBrand href="/">
-              Ristorante Con Fusion
+              My Restaurant :)
             </NavbarBrand>
           </div>
         </Navbar>
