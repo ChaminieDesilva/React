@@ -3,9 +3,12 @@ import { Card, CardImg, List, CardText, CardBody,CardTitle } from 'reactstrap';
 
 class DishDetail extends Component{
 
-    constructor(props) {
-        super(props);
+    componentDidMount(){
+        console.log("Dish Detail component componentDidMount invoked");
+    }
 
+    componentDidUpdate(){
+        console.log("Dish Detail component componentDidUpdated invoked");
     }
 
     renderComments(dish){
