@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardImg, List, CardText, CardBody,CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import CommentForm from './CommentForm';
 
     function RenderComments({comments}){
         if (comments!=null) {
@@ -14,7 +15,10 @@ import {Link} from 'react-router-dom';
                     </div>
                 )
             });
-            return(<div>{comm}</div>);
+            return(<div>
+                {comm}
+                <CommentForm></CommentForm>
+                </div>);
         }
 
         else{
