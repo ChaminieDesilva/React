@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom';
 
 
 
-function RenderLeaders(props){
-    return(
-        <div className = "card">
-            <div  className="row no-gutter">
+function RenderLeaders(props) {
+    return (
+        <div className="card">
+            <div className="row no-gutter">
                 <div className="col-auto">
-                <CardImg width="100%"  src={props.leader.image} alt={props.leader.name} />
+                    <CardImg width="100%" src={props.leader.image} alt={props.leader.name} />
                 </div>
                 <div className="col">
-                <CardBody>
-                    <CardTitle>{props.leader.name}</CardTitle>
-                    <CardSubtitle>{props.leader.designation}</CardSubtitle>
-                    <CardText>{props.leader.description} </CardText>
-                </CardBody>
+                    <CardBody>
+                        <CardTitle>{props.leader.name}</CardTitle>
+                        <CardSubtitle>{props.leader.designation}</CardSubtitle>
+                        <CardText>{props.leader.description} </CardText>
+                    </CardBody>
                 </div>
             </div>
         </div>
@@ -28,11 +28,11 @@ function About(props) {
 
     const leaders = props.leaders.map((leader) => {
         return (
-            <RenderLeaders leader = {leader}/>
+            <RenderLeaders leader={leader} />
         );
     });
 
-    return(
+    return (
         <div className="container">
             <div className="row">
                 <Breadcrumb>
@@ -42,7 +42,7 @@ function About(props) {
                 <div className="col-12">
                     <h3>About Us</h3>
                     <hr />
-                </div>                
+                </div>
             </div>
             <div className="row row-content">
                 <div className="col-12 col-md-6">
@@ -74,8 +74,8 @@ function About(props) {
                                 <p className="mb-3">You better cut the pizza in four pieces because
                                     I'm not hungry enough to eat six.</p>
                                 <footer className="blockquote-footer">Yogi Berra,
-                                <cite title="Source Title">The Wit and Wisdom of Yogi Berra,
-                                    P. Pepe, Diversion Books, 2014</cite>
+                                    <cite title="Source Title">The Wit and Wisdom of Yogi Berra,
+                                        P. Pepe, Diversion Books, 2014</cite>
                                 </footer>
                             </blockquote>
                         </CardBody>
@@ -96,4 +96,4 @@ function About(props) {
     );
 }
 
-export default About;    
+export default About;
