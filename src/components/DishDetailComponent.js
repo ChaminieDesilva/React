@@ -3,7 +3,7 @@ import { Card, CardImg, List, CardText, CardBody, CardTitle, Breadcrumb, Breadcr
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
-import { baseUrl  } from '../shared/baseUrl';
+import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
@@ -104,20 +104,20 @@ class CommentForm extends Component {
 
 function RenderComments({ comments, postComment, dishId }) {
     if (comments != null) {
-        
+
         const comm = comments.map((c) => {
             return (
                 <Fade in>
-                <div key={c.id}>
-                    <List type="unstyled">
-                        <li>{c.comment}</li>
-                        <li>--{c.author}, {new Date(c.date).toDateString()}</li>
-                    </List>    
-                </div>
+                    <div key={c.id}>
+                        <List type="unstyled">
+                            <li>{c.comment}</li>
+                            <li>--{c.author}, {new Date(c.date).toDateString()}</li>
+                        </List>
+                    </div>
                 </Fade>
             );
         });
-        
+
         return (<div>
             {comm}
             <CommentForm dishId={dishId} postComment={postComment} />
@@ -137,13 +137,13 @@ function RenderDish({ dish }) {
                 transformProps={{
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
-            <Card >
-                <CardImg width="100%" object src={baseUrl + dish.image} alt={dish.name} />
-                <CardBody>
-                    <CardTitle><h5>{dish.name}</h5></CardTitle>
-                    <CardText>{dish.description}</CardText>
-                </CardBody>
-            </Card>
+                <Card >
+                    <CardImg width="100%" object src={baseUrl + dish.image} alt={dish.name} />
+                    <CardBody>
+                        <CardTitle><h5>{dish.name}</h5></CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
             </FadeTransform>
         </div>
     )
@@ -161,9 +161,9 @@ function DishDetail(props) {
         )
     }
     else if (props.errMess) {
-        return(
+        return (
             <div className="container">
-                <div className="row">            
+                <div className="row">
                     <h4>{props.errMes}</h4>
                 </div>
             </div>
@@ -190,11 +190,11 @@ function DishDetail(props) {
                     <div className="col-12 col-md-5 m-1">
                         <h4>Comments</h4>
                         <Stagger in>
-                        <RenderComments
-                            comments={props.comments}
-                            postComment={props.postComment}
-                            dishId={props.dish.id}
-                        /></Stagger>
+                            <RenderComments
+                                comments={props.comments}
+                                postComment={props.postComment}
+                                dishId={props.dish.id}
+                            /></Stagger>
                     </div>
                 </div>
             </div>
