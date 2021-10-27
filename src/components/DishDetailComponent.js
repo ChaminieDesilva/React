@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { baseUrl  } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -102,16 +104,20 @@ class CommentForm extends Component {
 
 function RenderComments({ comments, postComment, dishId }) {
     if (comments != null) {
+        
         const comm = comments.map((c) => {
             return (
+                <Fade in>
                 <div key={c.id}>
                     <List type="unstyled">
                         <li>{c.comment}</li>
                         <li>--{c.author}, {new Date(c.date).toDateString()}</li>
-                    </List>
+                    </List>    
                 </div>
-            )
+                </Fade>
+            );
         });
+        
         return (<div>
             {comm}
             <CommentForm dishId={dishId} postComment={postComment} />
@@ -126,6 +132,11 @@ function RenderComments({ comments, postComment, dishId }) {
 function RenderDish({ dish }) {
     return (
         <div key={dish.id}>
+            <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
             <Card >
                 <CardImg width="100%" object src={baseUrl + dish.image} alt={dish.name} />
                 <CardBody>
@@ -133,6 +144,7 @@ function RenderDish({ dish }) {
                     <CardText>{dish.description}</CardText>
                 </CardBody>
             </Card>
+            </FadeTransform>
         </div>
     )
 }
@@ -177,11 +189,12 @@ function DishDetail(props) {
                     </div>
                     <div className="col-12 col-md-5 m-1">
                         <h4>Comments</h4>
+                        <Stagger in>
                         <RenderComments
                             comments={props.comments}
                             postComment={props.postComment}
                             dishId={props.dish.id}
-                        />
+                        /></Stagger>
                     </div>
                 </div>
             </div>
