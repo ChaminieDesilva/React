@@ -1,7 +1,8 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, CardSubtitle, CardText, CardImg, CardTitle, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
 function RenderLeaders(props) {
@@ -9,7 +10,7 @@ function RenderLeaders(props) {
         <div className="card">
             <div className="row no-gutter">
                 <div className="col-auto">
-                    <CardImg width="100%" src={props.leader.image} alt={props.leader.name} />
+                    <CardImg width="100%" src={baseUrl + props.leader.image} alt={props.leader.name} />
                 </div>
                 <div className="col">
                     <CardBody>
@@ -25,12 +26,16 @@ function RenderLeaders(props) {
 
 
 function About(props) {
-
-    const leaders = props.leaders.map((leader) => {
+    
+    const leaders = <Stagger in>{ props.leaders.map((leader) => {
         return (
+            <Fade in>
             <RenderLeaders leader={leader} />
+            </Fade>
         );
-    });
+    })}
+    </Stagger>
+    
 
     return (
         <div className="container">
